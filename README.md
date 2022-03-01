@@ -38,12 +38,11 @@ class Repo(models.Model):
 
 ```
 
-## How to run
+## Installation
 
 ```
 $ git clone git@github.com:Witaly3/github_api_drf.git
 $ pip install -r requirements.txt
-$ make django-migrate
-$ make django-run
+
 ```
 
