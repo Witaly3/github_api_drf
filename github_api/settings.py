@@ -78,8 +78,15 @@ WSGI_APPLICATION = 'github_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'github_db',
+        'USER': 'witaly',
+        'PASSWORD': 'dbnfkz33',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -106,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Europe/Moscow'
 
@@ -128,7 +135,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer'
+        'rest_framework.renderers.BrowsableAPIRenderer',
+
     ],
-    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+    # 'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+    # 'TEST_REQUEST_RENDERER_CLASSES': [
+    #     'rest_framework.renderers.MultiPartRenderer',
+    #     'rest_framework.renderers.JSONRenderer',
+    #     'rest_framework.renderers.TemplateHTMLRenderer'
+    # ]
 }

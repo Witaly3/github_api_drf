@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Repo, UrlUsers
-from .serializer import *
+from .serializer import RepoSerializer, UrlSerializer
 
 
 class UsersGithubAPIView(APIView):
@@ -29,7 +29,7 @@ class StatGithubAPIView(APIView):
     def get(self, request):
         count_author = UrlUsers.objects.count()
         count_repo = Repo.objects.count()
-        avg_repo = round(count_repo / count_author, 1)
+        avg_repo = round(count_repo / count_author, 1) if (count_repo and count_author) else 0
         return Response({'Количество пользователей (проектов)': count_author,
                          'Общее количество репозиториев': count_repo,
                          'Среднее количество репозиториев у пользователя (проекта)': avg_repo
@@ -48,7 +48,7 @@ class StatRepoGithubAPIView(APIView):
         return Response(content)
 
 
-class RepoAPIUpdate(generics.ListCreateAPIView):
+class RepoAPICreate(generics.ListCreateAPIView):
     queryset = Repo.objects.all()
     serializer_class = RepoSerializer
 
