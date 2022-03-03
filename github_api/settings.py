@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'github_db',
         'USER': 'witaly',
-        'PASSWORD': 'dbnfkz33',
+        'PASSWORD': '123456',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -138,10 +138,5 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',
 
     ],
-    # 'TEST_REQUEST_DEFAULT_FORMAT': 'json',
-    # 'TEST_REQUEST_RENDERER_CLASSES': [
-    #     'rest_framework.renderers.MultiPartRenderer',
-    #     'rest_framework.renderers.JSONRenderer',
-    #     'rest_framework.renderers.TemplateHTMLRenderer'
-    # ]
+    
 }
