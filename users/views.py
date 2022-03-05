@@ -1,8 +1,10 @@
-from django.db.models import Count, Avg, Max
+from django.db.models import Avg
 from rest_framework import generics
-from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework_api_key.permissions import HasAPIKey
+from rest_framework.permissions import IsAuthenticated
+
 
 from .models import Repo, UrlUsers
 from .serializer import RepoSerializer, UrlSerializer
@@ -51,8 +53,11 @@ class StatRepoGithubAPIView(APIView):
 class RepoAPICreate(generics.ListCreateAPIView):
     queryset = Repo.objects.all()
     serializer_class = RepoSerializer
+    permission_classes = [HasAPIKey | IsAuthenticated]
 
-
+   
 class UrlAPICreate(generics.ListCreateAPIView):
     queryset = UrlUsers.objects.all()
     serializer_class = UrlSerializer
+    permission_classes = [HasAPIKey | IsAuthenticated]
+
