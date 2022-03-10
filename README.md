@@ -1,46 +1,22 @@
 # Django REST Framework API for Github scrapping
 
 
-Cервис по просмотру данных о репозиториях пользователей:
+Service for viewing data about user repositories: 
 
- + API получения ссылок на страницы пользователей (или проектов):  ``` api/v1/users/ ```;
- + API получения репозиториев пользователя (или проекта):  ```api/v2/repo/ ```;
- + API получения общей статистики:  ``` api/v3/stat/```, (1. Количество пользователей (проектов), 2. Общее количество репозиториев, 3. Среднее количество репозиториев у пользователя (проекта) );
- + API получения статистики по одному пользователю (или проекту):  ```api/v4/stat-repo/``` , (1. Репозиторий с максимальным количеством коммитов (название
-репозитория - количество), 2. Среднее количество звезд в репозиториях);
-+ API по сохранению данных о репозиториях пользователя (или проекта):  ```api/v5/create-repo/ ```;
-+ API по добавлению ссылок на страницы пользователей (или проектов): ``` api/v6/create-url/ ``` (ссылки валидируются).
+ + API for getting links to user (or project) pages:  ``` api/v1/users/ ```;
+ + API for getting user (or project) repositories:  ```api/v2/repo/ ```;
+ +  General statistics API:  ``` api/v3/stat/```, (1. Number of users (projects), 2. Total number of repositories, 3. Average number of repositories per user (project));
+ +  API for getting statistics for one user (or project):  ```api/v4/stat-repo/``` , (1. Repository with the maximum number of commits (repository name - number), 2. Average number of stars in repositories);
+ + API for saving data about user (or project) repositories:   ```api/v5/create-repo/ ```;
+ + API for adding links to user (or project) pages: ``` api/v6/create-url/ ``` .
 
-Данные сохраняются в базу Postgresql.
+The data is stored in the Postgresql database.
 
-Есть тесты на API получения общей статистики.
+There are tests on the API for getting general statistics.
 
-Реализован доступ по API KEY для API по сохранению данных и ссылок.
+Implemented access by API KEY for the API for saving data and links.
 
-Задействованны 2 модели данных, которые соединены между собой:
-
-```
-class UrlUsers(models.Model):
-    url = models.URLField(blank=False, unique=True)
-  
-  
-class Repo(models.Model):
-    name_repo = models.CharField(max_length=255, blank=False)
-    about = models.TextField(blank=True)
-    site = models.CharField(max_length=255, blank=True)
-    stars = models.IntegerField(blank=False)
-    forks = models.IntegerField(blank=False)
-    watching = models.IntegerField(blank=False)
-    commits = models.IntegerField(blank=False)
-    last_commit_author = models.TextField(blank=False)
-    last_commit_text = models.TextField(blank=False)
-    last_commit_date = models.CharField(max_length=255, blank=False)
-    releases = models.IntegerField(blank=False)
-    last_release_version = models.CharField(max_length=50, blank=True)
-    last_release_date = models.CharField(max_length=100, blank=True)
-    url_user = models.ForeignKey(UrlUsers, to_field='url', db_column='url_user', on_delete=models.CASCADE)
-
-```
+2 data models are involved, which are interconnected.
 
 ## Installation
 

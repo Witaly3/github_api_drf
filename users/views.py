@@ -32,9 +32,9 @@ class StatGithubAPIView(APIView):
         count_author = UrlUsers.objects.count()
         count_repo = Repo.objects.count()
         avg_repo = round(count_repo / count_author, 1) if (count_repo and count_author) else 0
-        return Response({'Количество пользователей (проектов)': count_author,
-                         'Общее количество репозиториев': count_repo,
-                         'Среднее количество репозиториев у пользователя (проекта)': avg_repo
+        return Response({'Number of users (projects) ': count_author,
+                         'Total number of repositories ': count_repo,
+                         'Average number of repositories per user (project)': avg_repo
                          })
 
 
@@ -46,7 +46,9 @@ class StatRepoGithubAPIView(APIView):
             lst = Repo.objects.filter(url_user__exact=i['url']).values_list('name_repo', 'commits')
             m = max(lst, key=lambda x: x[1])
             avg_stars = Repo.objects.filter(url_user__exact=i['url']).aggregate(avg=Avg('stars'))
-            content[i['url']] = {m[0]: m[1]}, avg_stars
+            content[i['url']] = {'Repository with the maximum number of commits': m,
+                                 'Average number of stars in repositories': avg_stars['avg']
+                                }
         return Response(content)
 
 
