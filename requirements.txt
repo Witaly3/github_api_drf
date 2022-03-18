@@ -1,4 +1,10 @@
+asgiref==3.5.0
 Django==4.0.2
 djangorestframework==3.13.1
-psycopg2-binary==2.9.3
 djangorestframework-api-key==2.1.0
+pip==22.0.4
+psycopg2-binary==2.9.3
+pytz==2021.3
+setuptools==57.0.0
+sqlparse==0.4.2
+wheel==0.36.2

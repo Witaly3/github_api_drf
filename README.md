@@ -20,13 +20,16 @@ Implemented access by API KEY for the API for saving data and links.
 
 ## Installation
 
-```
-$ git clone git@github.com:Witaly3/github_api_drf.git
-$ pip install -r requirements.txt
 
-```
+1. Clone this repo
+```$ git clone git@github.com:Witaly3/github_api_drf.git```
+2. Enter repo folder
+3. ``` sudo docker-compose up -d```
+4. Open in browser ```0.0.0.0:8000``` and add the required api. Example:  ```0.0.0.0:8000/api/v1/users/```
+4. ```sudo docker-compose down```
 
-In ``` settings.py ``` by the address ``` github_api_drf/github_api ``` set your settings for connecting to Postgresql:
+
+In ``` settings.py ``` by the address ``` github_api_drf/github_api ``` set your settings for connecting to Postgresql. Example:
 
 ```
 DATABASES = {
@@ -40,3 +43,6 @@ DATABASES = {
     }
 }
 ```
+## Run test
+
+```sudo docker-compose exec web python manage.py test```

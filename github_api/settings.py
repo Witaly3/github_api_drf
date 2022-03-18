@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-6mixjq0j!3y0egt(dtsnd)nj1i=chfm075j(($rwrjrdeormlx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
 
@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'github_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'github_db',
-        'USER': 'witaly',
-        'PASSWORD': '123456',
-        'HOST': '127.0.0.1',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
