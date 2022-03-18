@@ -22,7 +22,7 @@ Implemented access by API KEY for the API for saving data and links.
 
 
 1. Clone this repo
-```$ git clone git@github.com:Witaly3/github_api_drf.git```
+```git clone git@github.com:Witaly3/github_api_drf.git```
 2. Enter repo folder
 3. ``` sudo docker-compose up -d```
 4. Open in browser ```0.0.0.0:8000``` and add the required api. Example:  ```0.0.0.0:8000/api/v1/users/```
@@ -43,6 +43,6 @@ DATABASES = {
     }
 }
 ```
-## Run test
+## Run tests
 
 ```sudo docker-compose exec web python manage.py test```
