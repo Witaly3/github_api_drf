@@ -22,7 +22,9 @@ class Repo(models.Model):
     releases = models.IntegerField(blank=False)
     last_release_version = models.CharField(max_length=50, blank=True)
     last_release_date = models.CharField(max_length=100, blank=True)
-    url_user = models.ForeignKey(UrlUsers, to_field='url', db_column='url_user', on_delete=models.CASCADE)
+    url_user = models.ForeignKey(
+        UrlUsers, to_field="url", db_column="url_user", on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return self.name_repo

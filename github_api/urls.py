@@ -20,12 +20,11 @@ from users.views import *
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/v1/users/', UsersGithubAPIView.as_view(), name="users"),
-    path('api/v1/repo/', RepoGithubAPIView.as_view(), name="repo"),
-    path('api/v1/stat/', StatGithubAPIView.as_view(), name="stat"),
-    path('api/v1/stat-repo/', StatRepoGithubAPIView.as_view(), name="stat_repo"),
-    path('api/v2/create-repo/', RepoAPICreate.as_view(), name="create_repo"),
-    path('api/v2/create-url/', UrlAPICreate.as_view(), name="create_url")
-
+    path("admin/", admin.site.urls),
+    path("api/v1/users/", UsersGithubAPIView.as_view(), name="users"),
+    path("api/v1/repo/", RepoGithubAPIView.as_view(), name="repo"),
+    path("api/v1/stat/", StatGithubAPIView.as_view(), name="stat"),
+    path("api/v1/stat-repo/", StatRepoGithubAPIView.as_view(), name="stat_repo"),
+    path("api/v2/create-repo/", RepoAPICreate.as_view(), name="create_repo"),
+    path("api/v2/create-url/", UrlAPICreate.as_view(), name="create_url"),
 ]
